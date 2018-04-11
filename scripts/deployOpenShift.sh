@@ -415,7 +415,6 @@ openshift_use_dnsmasq=True
 openshift_master_default_subdomain=$ROUTING
 openshift_override_hostname_check=true
 osm_use_cockpit=false
-os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 #console_port=443
 openshift_cloudprovider_kind=azure
 osm_default_node_selector='type=app'
@@ -423,6 +422,10 @@ openshift_disable_check=disk_availability,memory_availability
 # default selectors for router and registry services
 openshift_router_selector='type=infra'
 openshift_registry_selector='type=infra'
+
+os_sdn_network_plugin_name=cni
+openshift_use_calico=true
+openshift_use_openshift_sdn=false
 
 openshift_master_cluster_method=native
 openshift_master_cluster_hostname=$MASTERPUBLICIPHOSTNAME
@@ -438,8 +441,6 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 # template_service_broker_install=false
 # Configure one of more namespaces whose templates will be served by the TSB
 openshift_template_service_broker_namespaces=['openshift']
-# Disable the OpenShift SDN plugin
-openshift_use_openshift_sdn=true
 
 # Setup metrics
 openshift_metrics_install_metrics=false
